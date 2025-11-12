@@ -5,6 +5,8 @@
 <!-- expose BASEURL ke JS supaya script.js bisa membangun endpoint dinamis -->
 <script>
 	const BASEURL = "<?= BASEURL; ?>";
+	// debug: tulis BASEURL sebagai komentar HTML untuk verifikasi cepat di page source
+	/* BASEURL_RESOLVED: <?= BASEURL; ?> */
 </script>
 <script src="<?= BASEURL; ?>/js/script.js"></script>
 </body>
