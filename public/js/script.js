@@ -8,7 +8,7 @@ $(function () {
     $("#email").val("");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/belajar/phpmvc/sesi13/public/mahasiswa/tambah"
+      BASEURL + "/index.php?url=mahasiswa/tambah"
     );
   });
   $(".tampilModalUbah").on("click", function () {
@@ -16,14 +16,14 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/belajar/phpmvc/sesi13/public/mahasiswa/ubah"
+      BASEURL + "/index.php?url=mahasiswa/ubah"
     );
 
     const id = $(this).data("id");
 
     // karena objek pake {}
     $.ajax({
-      url: "http://localhost/belajar/phpmvc/sesi13/public/mahasiswa/getubah",
+      url: BASEURL + "/index.php?url=mahasiswa/getubah",
       data: { id: id },
       method: "post",
       dataType: "json",
