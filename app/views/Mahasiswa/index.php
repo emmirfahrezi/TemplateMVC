@@ -1,10 +1,15 @@
-<div class="container">
+<div class="container mt-4">
+
+<div class="row">
+  <div class="col-md-6">
+    <?php Flasher::flash(); ?>
+</div>
   <div class="row">
     <div class="col-md-6">
       <h1>Daftar Mahasiswa</h1>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
-        Launch demo modal
+      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#formModal">
+        tambah mahasiswa
       </button>
 
 
@@ -18,6 +23,7 @@
             </div>
             <div class="modal-body">
               <form action="<?= BASEURL; ?>/index.php?url=mahasiswa/tambah" method="post">
+                <input type="hidden" name="id" id="id">
                 <div class="mb-3">
                   <label for="nama" class="form-label">Nama</label>
                   <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama">
@@ -43,13 +49,15 @@
           </div>
         </div>
       </div>
-      <br>
-
-      <ul class="list-group">
+      <ul class="list-group mt-2">
         <?php foreach ($data['mhs'] as $mhs) : ?>
-          <li class="list-group-item d-flex justify-content-between align-items-start">
+          <li class="list-group-item">
             <?= htmlspecialchars($mhs['nama'], ENT_QUOTES, 'UTF-8') ?>
-            <a href="<?= BASEURL; ?>/index.php?url=mahasiswa/detail/<?= $mhs['id'] ?>" class="badge text-bg-primary">detail</a>
+            <div class="btn-group float-end" role="group" aria-label="Aksi Mahasiswa">
+              <a href="<?= BASEURL; ?>/index.php?url=mahasiswa/detail/<?= $mhs['id'] ?>" class="badge text-bg-primary me-1">detail</a>
+              <a href="<?= BASEURL; ?>/index.php?url=mahasiswa/ubah/<?= $mhs['id'] ?>" class="badge text-bg-warning me-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id'] ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/index.php?url=mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge text-bg-danger" onclick="return confirm('yakin?')">hapus</a>
+            </div>
           </li>
         <?php endforeach; ?>
       </ul>

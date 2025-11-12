@@ -1,6 +1,6 @@
 $(function () {
   $(".tombolTambahData").on("click", function () {
-    $("#judulModalLabel").html("Tambah Data Mahasiswa");
+    $("#formModalLabel").html("Tambah Data Mahasiswa");
     $(".modal-footer button[type=submit]").html("Tambah Data");
     $("#nama").val("");
     $("#nim").val("");
@@ -12,7 +12,7 @@ $(function () {
     );
   });
   $(".tampilModalUbah").on("click", function () {
-    $("#judulModalLabel").html("Ubah Data Mahasiswa");
+    $("#formModalLabel").html("Ubah Data Mahasiswa");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
@@ -29,7 +29,7 @@ $(function () {
       dataType: "json",
       success: function (data) {
         $("#nama").val(data.nama);
-        $("#nim").val(data.nim);
+        $("#nrp").val(data.nrp);
         $("#jurusan").val(data.jurusan);
         $("#email").val(data.email);
         $("#id").val(data.id);

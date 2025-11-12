@@ -33,5 +33,31 @@ private $table = 'mahasiswa';
       
       return $this->dbh->rowCount();
   }
+
+  public function hapusDataMahasiswa($id) {
+      $query = "DELETE FROM " . $this->table . " WHERE id = :id";
+      
+      $this->dbh->query($query);
+      $this->dbh->bind(':id', $id);
+      
+      $this->dbh->execute();
+      
+      return $this->dbh->rowCount();
+  }
+
+  public function ubahDataMahasiswa($data) {
+      $query = "UPDATE " . $this->table . " SET nama = :nama, nrp = :nrp, email = :email, jurusan = :jurusan WHERE id = :id";
+      
+      $this->dbh->query($query);
+      $this->dbh->bind(':nama', $data['nama']);
+      $this->dbh->bind(':nrp', $data['nrp']);
+      $this->dbh->bind(':email', $data['email']);
+      $this->dbh->bind(':jurusan', $data['jurusan']);
+      $this->dbh->bind(':id', $data['id']);
+      
+      $this->dbh->execute();
+      
+      return $this->dbh->rowCount();
+  }
 }
           
